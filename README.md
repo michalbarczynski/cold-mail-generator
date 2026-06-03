@@ -1,1 +1,1 @@
-# cold-mail-generator
+[# cold-mail-generator](https://michalbarczynski.github.io/cold-mail-generator/)
