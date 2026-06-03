@@ -26,6 +26,12 @@
 <label>Kraj / rynek docelowy</label>
 <input type="text" id="country" placeholder="np. Polska, Niemcy" />
 
+<label>Opis firmy <span style="font-weight:normal;color:#888">(wklej fragment ze strony "O nas" lub LinkedIn)</span></label>
+<textarea id="description" rows="4" placeholder="np. Firma XYZ specjalizuje się w transporcie chłodniczym na rynku europejskim. Obsługuje klientów z branży spożywczej i farmaceutycznej..."></textarea>
+
+<label>Kim jesteś i co oferujesz <span style="font-weight:normal;color:#888">(1-2 zdania)</span></label>
+<textarea id="sender" rows="2" placeholder="np. Jestem freelancerem specjalizującym się w automatyzacjach AI dla e-commerce. Pomagam sklepom zautomatyzować obsługę klienta i lead gen."></textarea>
+
 <label>Klucz API Gemini</label>
 <input type="password" id="apikey" placeholder="Wklej swój klucz tutaj" />
 
@@ -41,6 +47,8 @@ async function generate() {
   const apiKey = document.getElementById('apikey').value.trim();
   const output = document.getElementById('output');
   const btn = document.getElementById('btn');
+  const description = document.getElementById('description').value.trim();
+  const sender = document.getElementById('sender').value.trim();
 
   if (!company || !industry || !apiKey) {
     alert('Wypełnij nazwę firmy, branżę i klucz API.');
@@ -56,6 +64,7 @@ async function generate() {
 Firma docelowa: ${company}
 Branża: ${industry}
 Kraj/rynek: ${country || 'nieokreślony'}
+${sender ? `\nNadawca / oferta:\n${sender}` : ''}
 
 Wygeneruj 3 warianty cold maila do tej firmy. Każdy wariant powinien mieć inny styl:
 - Wariant 1: formalny i profesjonalny
@@ -102,3 +111,4 @@ Każdy mail powinien mieć: temat, treść (max 5 zdań), i wyraźne CTA. Maile 
 
 </body>
 </html>
+
